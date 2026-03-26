@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pipeline7helm-ingress
+  namespace: bank-production
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: pipeline7helm.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pipeline7helm-service
+            port:
+              number: 80
+      - path: /login
+        pathType: Prefix
+        backend:
+          service:
+            name: pipeline7helm-service
+            port:
+              number: 80
+      - path: /signup
+        pathType: Prefix
+        backend:
+          service:
+            name: pipeline7helm-service
+            port:
+              number: 80
