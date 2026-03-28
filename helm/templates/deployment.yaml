@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pipeline8-app
-  namespace: bank-production
+  namespace: bank-production-v8
 spec:
   replicas: 1
   selector:

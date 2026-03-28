@@ -2,9 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: pipeline8Trivy-ingress
-  namespace: bank-production
+  namespace: bank-production-v8
   annotations:
     kubernetes.io/ingress.class: nginx
+    # Optional: ensures the trailing slash works correctly
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: pipeline7helm.local
@@ -14,20 +16,20 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: pipeline7helm-service
+            name: pipeline8Trivy-service
             port:
               number: 80
       - path: /login
         pathType: Prefix
         backend:
           service:
-            name: pipeline7helm-service
+            name: pipeline8Trivy-service
             port:
               number: 80
       - path: /signup
         pathType: Prefix
         backend:
           service:
-            name: pipeline7helm-service
+            name: pipeline8Trivy-service
             port:
               number: 80
